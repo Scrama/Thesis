@@ -30,8 +30,10 @@
         {
             System.Windows.Forms.TableLayoutPanel layout;
             System.Windows.Forms.Panel left;
+            System.Windows.Forms.GroupBox groupData;
             System.Windows.Forms.Panel right;
-            this.groupData = new System.Windows.Forms.GroupBox();
+            System.Windows.Forms.GroupBox groupTarget;
+            System.Windows.Forms.GroupBox groupHeader;
             this._listData = new System.Windows.Forms.ListBox();
             this._buttonAdd = new System.Windows.Forms.Button();
             this._buttonRemove = new System.Windows.Forms.Button();
@@ -40,21 +42,22 @@
             this._buttonUp = new System.Windows.Forms.Button();
             this._build = new System.Windows.Forms.Button();
             this._about = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this._target = new System.Windows.Forms.TextBox();
             this._browseTarget = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this._header = new System.Windows.Forms.TextBox();
             this._browseHeader = new System.Windows.Forms.Button();
             layout = new System.Windows.Forms.TableLayoutPanel();
             left = new System.Windows.Forms.Panel();
+            groupData = new System.Windows.Forms.GroupBox();
             right = new System.Windows.Forms.Panel();
+            groupTarget = new System.Windows.Forms.GroupBox();
+            groupHeader = new System.Windows.Forms.GroupBox();
             layout.SuspendLayout();
             left.SuspendLayout();
-            this.groupData.SuspendLayout();
+            groupData.SuspendLayout();
             right.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            groupTarget.SuspendLayout();
+            groupHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // layout
@@ -74,7 +77,7 @@
             // 
             // left
             // 
-            left.Controls.Add(this.groupData);
+            left.Controls.Add(groupData);
             left.Dock = System.Windows.Forms.DockStyle.Fill;
             left.Location = new System.Drawing.Point(3, 3);
             left.Name = "left";
@@ -84,21 +87,21 @@
             // 
             // groupData
             // 
-            this.groupData.AccessibleRole = System.Windows.Forms.AccessibleRole.Border;
-            this.groupData.Controls.Add(this._listData);
-            this.groupData.Controls.Add(this._buttonAdd);
-            this.groupData.Controls.Add(this._buttonRemove);
-            this.groupData.Controls.Add(this._buttonSort);
-            this.groupData.Controls.Add(this._buttonDown);
-            this.groupData.Controls.Add(this._buttonUp);
-            this.groupData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupData.Location = new System.Drawing.Point(8, 8);
-            this.groupData.Margin = new System.Windows.Forms.Padding(10);
-            this.groupData.Name = "groupData";
-            this.groupData.Size = new System.Drawing.Size(376, 456);
-            this.groupData.TabIndex = 1;
-            this.groupData.TabStop = false;
-            this.groupData.Text = "Входные данные";
+            groupData.AccessibleRole = System.Windows.Forms.AccessibleRole.Border;
+            groupData.Controls.Add(this._listData);
+            groupData.Controls.Add(this._buttonAdd);
+            groupData.Controls.Add(this._buttonRemove);
+            groupData.Controls.Add(this._buttonSort);
+            groupData.Controls.Add(this._buttonDown);
+            groupData.Controls.Add(this._buttonUp);
+            groupData.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupData.Location = new System.Drawing.Point(8, 8);
+            groupData.Margin = new System.Windows.Forms.Padding(10);
+            groupData.Name = "groupData";
+            groupData.Size = new System.Drawing.Size(376, 456);
+            groupData.TabIndex = 1;
+            groupData.TabStop = false;
+            groupData.Text = "Входные данные";
             // 
             // _listData
             // 
@@ -166,8 +169,8 @@
             // 
             right.Controls.Add(this._build);
             right.Controls.Add(this._about);
-            right.Controls.Add(this.groupBox3);
-            right.Controls.Add(this.groupBox2);
+            right.Controls.Add(groupTarget);
+            right.Controls.Add(groupHeader);
             right.Dock = System.Windows.Forms.DockStyle.Fill;
             right.Location = new System.Drawing.Point(401, 3);
             right.Name = "right";
@@ -195,17 +198,17 @@
             this._about.Text = "Программа";
             this._about.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // groupTarget
             // 
-            this.groupBox3.Controls.Add(this._target);
-            this.groupBox3.Controls.Add(this._browseTarget);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(8, 98);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(377, 90);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Результат";
+            groupTarget.Controls.Add(this._target);
+            groupTarget.Controls.Add(this._browseTarget);
+            groupTarget.Dock = System.Windows.Forms.DockStyle.Top;
+            groupTarget.Location = new System.Drawing.Point(8, 98);
+            groupTarget.Name = "groupTarget";
+            groupTarget.Size = new System.Drawing.Size(377, 90);
+            groupTarget.TabIndex = 3;
+            groupTarget.TabStop = false;
+            groupTarget.Text = "Результат";
             // 
             // _target
             // 
@@ -227,17 +230,17 @@
             this._browseTarget.Text = "Указать";
             this._browseTarget.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // groupHeader
             // 
-            this.groupBox2.Controls.Add(this._header);
-            this.groupBox2.Controls.Add(this._browseHeader);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(8, 8);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(377, 90);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Файл-заголовок";
+            groupHeader.Controls.Add(this._header);
+            groupHeader.Controls.Add(this._browseHeader);
+            groupHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            groupHeader.Location = new System.Drawing.Point(8, 8);
+            groupHeader.Name = "groupHeader";
+            groupHeader.Size = new System.Drawing.Size(377, 90);
+            groupHeader.TabIndex = 2;
+            groupHeader.TabStop = false;
+            groupHeader.Text = "Файл-заголовок";
             // 
             // _header
             // 
@@ -270,12 +273,12 @@
             this.Text = "Сборник";
             layout.ResumeLayout(false);
             left.ResumeLayout(false);
-            this.groupData.ResumeLayout(false);
+            groupData.ResumeLayout(false);
             right.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            groupTarget.ResumeLayout(false);
+            groupTarget.PerformLayout();
+            groupHeader.ResumeLayout(false);
+            groupHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -284,13 +287,10 @@
 
         private System.Windows.Forms.Button _build;
         private System.Windows.Forms.Button _about;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox _target;
         private System.Windows.Forms.Button _browseTarget;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox _header;
         private System.Windows.Forms.Button _browseHeader;
-        private System.Windows.Forms.GroupBox groupData;
         private System.Windows.Forms.ListBox _listData;
         private System.Windows.Forms.Button _buttonAdd;
         private System.Windows.Forms.Button _buttonRemove;

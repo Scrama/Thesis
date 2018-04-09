@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Forms;
 
 namespace cm
 {
-    public partial class MainForm : Form
+    [SuppressMessage("ReSharper", "LocalizableElement")]
+    public partial class MainForm : Form, IView
     {
         public MainForm()
         {
@@ -34,6 +37,7 @@ namespace cm
             _browseHeader.Click += HeaderBrowseClick;
             _browseTarget.Click += TargetBrowseClick;
             _build.Click += BuildClick;
+            _about.Click += AboutClick;
         }
 
         private bool _building;
@@ -176,10 +180,24 @@ namespace cm
             Building?.Invoke(this, null);
         }
 
-        public void ReleaseButtons()
+        public void ReleaseButtons(bool success, string log)
         {
-            _building = false;
-            ValidateButtons();
+            BeginInvoke(new Action(() =>
+                {
+                    _building = false;
+                    ValidateButtons();
+
+                    if (success)
+                        MessageBox.Show(this, @"Сборка прошла успешно", @"Ура!");
+                    else
+                    {
+                        if (MessageBox.Show(this, "Что-то пошло не так :(\nОткрыть лог?", @"Ой!",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Error) == DialogResult.Yes)
+                            Process.Start(log);
+                    }
+                })
+            );
         }
 
         private void AboutClick(object sender, EventArgs e)

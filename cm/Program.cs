@@ -16,7 +16,7 @@ namespace cm
             var view = new MainForm();
             var p = new Presenter(view);
             Application.Run(view);
-            p.SaveSettings();
+            GC.KeepAlive(p);
         }
     }
 }

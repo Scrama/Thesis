@@ -11,11 +11,11 @@ namespace cm
     {
         private string _path;
 
-        private readonly MainForm _view;
+        private readonly IView _view;
 
         private readonly Model _model = new Model();
 
-        public Presenter(MainForm view)
+        public Presenter(IView view)
         {
             _view = view;
 
@@ -28,7 +28,8 @@ namespace cm
             _view.TargetBrowsing += TargetBrowsing;
             _view.Building += StartBuilding;
 
-            LoadSettings();
+            _view.Load += (sender, args) => LoadSettings();
+            _view.Closed += (sender, args) => SaveSettings();
         }
 
         private void StartBuilding(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace cm
 
             Task.Factory
                 .StartNew(() => _model.Build(header, target))
-                .ContinueWith(success => _view.BeginInvoke(new Action(_view.ReleaseButtons)));
+                .ContinueWith(success => _view.ReleaseButtons(success.Result, Log.Filename));
         }
 
         private void HeaderBrowsing(object sender, EventArgs e)
@@ -118,9 +119,18 @@ namespace cm
         private void LoadSettings()
         {
             _path = ConfigurationManager.AppSettings.Get(nameof(_path));
+            _view.Header = ConfigurationManager.AppSettings.Get(nameof(_view.Header));
+            _view.Target = ConfigurationManager.AppSettings.Get(nameof(_view.Target));
+            var files = ConfigurationManager.AppSettings.Get(nameof(_model.Files));
 
             if (string.IsNullOrEmpty(_path))
                 _path = Application.StartupPath;
+
+            if (!string.IsNullOrEmpty(files))
+            {
+                _model.Files.AddRange(files.Split('*'));
+                _view.SetFiles(_model.Files);
+            }
         }
 
         public void SaveSettings()
@@ -128,10 +138,11 @@ namespace cm
             var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var settings = configFile.AppSettings.Settings;
 
-            if (settings[nameof(_path)] == null)
-                settings.Add(nameof(_path), _path);
-            else
-                settings[nameof(_path)].Value = _path;
+            settings
+                .Set(nameof(_path), _path)
+                .Set(nameof(_view.Header), _view.Header)
+                .Set(nameof(_view.Target), _view.Target)
+                .Set(nameof(_model.Files), string.Join("*", _model.Files));
 
             configFile.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
@@ -139,4 +150,19 @@ namespace cm
 
         #endregion
     }
+
+    public static class SettingsExtension
+    {
+        public static KeyValueConfigurationCollection Set(this KeyValueConfigurationCollection settings, string name, string value)
+        {
+            if (settings[name] == null)
+                settings.Add(name, value);
+            else
+                settings[name].Value = value;
+
+            return settings;
+        }
+    }
+
+
 }

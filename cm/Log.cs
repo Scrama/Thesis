@@ -41,6 +41,8 @@ namespace cm
 
         private readonly string _path;
 
+        public static string Filename => Instance._path;
+
         private readonly Dictionary<MessageType, string> _typeMap = new Dictionary<MessageType, string>
         {
             {MessageType.Error, "[E]" },
