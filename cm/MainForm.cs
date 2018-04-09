@@ -9,8 +9,47 @@ namespace cm
         public MainForm()
         {
             InitializeComponent();
+
+            _buttonUp.Enabled = false;
+            _buttonDown.Enabled = false;
+            _buttonRemove.Enabled = false;
+            _buttonSort.Enabled = false;
+            _build.Enabled = false;
+
+            _listData.SelectedIndexChanged += (sender, args) => ValidateButtons();
+
+            _header.TextChanged += (sender, args) => ValidateButtons();
+            _target.TextChanged += (sender, args) => ValidateButtons();
+
+            BindButtons();
         }
 
+        private void BindButtons()
+        {
+            _buttonAdd.Click += AddClick;
+            _buttonUp.Click += UpClick;
+            _buttonDown.Click += DownClick;
+            _buttonSort.Click += SortClick;
+            _buttonRemove.Click += RemoveClick;
+            _browseHeader.Click += HeaderBrowseClick;
+            _browseTarget.Click += TargetBrowseClick;
+            _build.Click += BuildClick;
+        }
+
+        private bool _building;
+
+        private void ValidateButtons()
+        {
+            _buttonUp.Enabled = _listData.SelectedIndex > 0;
+            _buttonDown.Enabled = _listData.SelectedIndex > -1 && _listData.SelectedIndex < _listData.Items.Count - 1;
+            _buttonRemove.Enabled = _listData.SelectedIndex > -1 && _listData.SelectedIndex < _listData.Items.Count;
+            _buttonSort.Enabled = _listData.Items.Count > 0;
+
+            _build.Enabled = !_building
+                             && !string.IsNullOrEmpty(_header.Text)
+                             && !string.IsNullOrEmpty(_target.Text)
+                             && _listData.Items.Count > 0;
+        }
 
         private void AddClick(object sender, EventArgs e)
         {
@@ -48,16 +87,17 @@ namespace cm
 
         public void SetFiles(List<string> files)
         {
-            var index = listData.SelectedIndex;
-            listData.Items.Clear();
-            files.ForEach(x => listData.Items.Add(x));
-            if (index < listData.Items.Count)
-                listData.SelectedIndex = index;
+            var index = _listData.SelectedIndex;
+            _listData.Items.Clear();
+            files.ForEach(x => _listData.Items.Add(x));
+            if (index < _listData.Items.Count)
+                _listData.SelectedIndex = index;
+            ValidateButtons();
         }
 
         public void Select(int index)
         {
-            listData.SelectedIndex = index;
+            _listData.SelectedIndex = index;
         }
 
         public string RequestHeader(string dir)
@@ -100,17 +140,17 @@ namespace cm
 
         private void RemoveClick(object sender, EventArgs e)
         {
-            FilesRemoving?.Invoke(this, listData.SelectedIndex);
+            FilesRemoving?.Invoke(this, _listData.SelectedIndex);
         }
 
         private void UpClick(object sender, EventArgs e)
         {
-            FileUp?.Invoke(this, listData.SelectedIndex);
+            FileUp?.Invoke(this, _listData.SelectedIndex);
         }
 
         private void DownClick(object sender, EventArgs e)
         {
-            FileDown?.Invoke(this, listData.SelectedIndex);
+            FileDown?.Invoke(this, _listData.SelectedIndex);
         }
 
         private void SortClick(object sender, EventArgs e)
@@ -130,16 +170,21 @@ namespace cm
 
         private void BuildClick(object sender, EventArgs e)
         {
-            //TODO buttons.enable = false
-            _build.Enabled = false;
+            _building = true;
+            ValidateButtons();
 
             Building?.Invoke(this, null);
         }
 
         public void ReleaseButtons()
         {
-            //TODO buttons.enable = true
-            _build.Enabled = true;
+            _building = false;
+            ValidateButtons();
+        }
+
+        private void AboutClick(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, @"Текст о программе", @"О программе");
         }
     }
 }
