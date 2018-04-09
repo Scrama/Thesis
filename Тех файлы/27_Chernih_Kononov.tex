@@ -1,0 +1,67 @@
+\documentclass{llncs}
+%
+\usepackage{makeidx}  % allows for indexgeneration
+%
+\begin{document}
+\mainmatter              % start of the contributions
+%
+\title{Exact polynomial-time algorithm for the two-machine routing flow shop problem with a restricted transportation network
+\thanks{This research was supported by RFBR grant 17-07-00513 and 18-01-00474.} }
+%
+\titlerunning{Short Title}  % abbreviated title (for running head)
+%                                     also used for the TOC unless
+%                                     \toctitle is used
+%
+\author{Ilya Chernykh\inst{1,2,3} \and
+Alexander Kononov\inst{1,2} \and
+Sergey Sevastyanov\inst{1,2}} 
+%
+\authorrunning{Ilya Chernykh, Alexander Kononov and Sergey Sevastyanov } % abbreviated author list (for running head)
+%
+%
+\institute{Sobolev Institute of Mathematics, Novosibirsk, Russia\\
+\email{idchern@math.nsc.ru, alvenko@math.nsc.ru, seva@math.nsc.ru}
+ \and
+Novosibirsk State University, Novosibirsk, Russia\\
+Novosibirsk State Technical University, Novosibirsk, Russia \\
+ }
+
+\maketitle              % typeset the title of the contribution
+
+\keywords{shop scheduling, routing, dynamic programming}
+\\
+
+We consider the routing flow shop problem being a generalization of the flow shop and the metric travelling salesman problems.
+The jobs are located at nodes of some transportation network, and the machines travel on the network to execute the jobs in the flow shop environment. 
+The machines are initially located at the same node (depot) and must return to the depot after completing all the jobs. 
+It is required to find a non- preemptive schedule with the minimal makespan.
+
+The routing flow shop problem was introduced by Averbakh and Berman \cite{AverbakhBerman}. 
+It is strongly NP-hard even in the single machine case as it contains the metric TSP as a special case.
+Yu et al. \cite{Yu} proved that the two-machine routing flow shop is ordinary NP-hard when the transportation network is a tree
+with unbounded number of nodes, i.e. the number of nodes is a linear function on the number of jobs.
+
+In our paper we consider the two-machine routing flow shop under the assumption that a transportation network is an arbitrary undirected graph with a constant number of vertices. 
+We present an exact polynomial-time algorithm for this case based on dynamic programming. 
+This stands in contrast to the complexity result for the two-machine routing open shop problem
+that is NP-hard even on the two-node network \cite{ABC}.
+
+
+
+
+
+
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{AverbakhBerman}
+Averbakh, I., Berman, O.:  Routing two-machine flow shop problems on networks with special structure. Transportation Science 30, 303--314 (1996).
+\bibitem{ABC} 
+Averbakh I, Berman O, Chernykh I: The routing open-shop problem on a network: complexity and approximation. European Journal of Operational Research 173(2), 521--39 (2006).
+\bibitem{Yu}
+Yu W., Liu Z., Wang L., Fan T.: Routing open shop and flow shop scheduling problems. European Journal of Operational Research 213, 24-36 (2011).
+
+
+\end{thebibliography}
+\end{document}
