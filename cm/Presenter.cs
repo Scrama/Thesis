@@ -52,7 +52,7 @@ namespace cm
 
         private void TargetBrowsing(object sender, EventArgs e)
         {
-            var target = _view.RequestTarget(_path);
+            var target = _view.RequestTarget(_path, _model.DefaultTarget);
             _view.Target = target;
             _path = Path.GetDirectoryName(target);
         }

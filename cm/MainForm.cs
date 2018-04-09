@@ -79,12 +79,13 @@ namespace cm
             set => _header.Text = value;
         }
 
-        public string RequestTarget(string dir)
+        public string RequestTarget(string dir, string filename)
         {
             var dialog = new SaveFileDialog
             {
                 Filter = @"Файлы tex|*.tex",
                 InitialDirectory = dir,
+                FileName = filename,
                 DefaultExt = ".tex",
                 Title = @"Выберите результирующий файл"
             };

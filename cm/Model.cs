@@ -22,21 +22,54 @@ namespace cm
 
         public List<string> Files { get; } = new List<string>();
 
+        public string DefaultTarget => $@"Сборник {DateTime.Today:yyyy-MM-dd}.tex";
+
         #region . Build .
 
         public bool Build(string header, string target)
         {
+            if (string.IsNullOrEmpty(header))
+                throw new ArgumentNullException(nameof(header), @"Путь к заголовочному файлу должен быть валидным");
+            if (string.IsNullOrEmpty(target))
+                throw new ArgumentNullException(nameof(target), @"Путь к результирующему файлу должен быть валидным");
+
             try
             {
                 var nameMap = new List<AuthFile>();
+                var body = Path.ChangeExtension(target, "body");
+                if (File.Exists(body))
+                    File.Delete(body);
 
                 foreach (var file in Files)
                 {
-                    var key = GetAuthor(file);
-                    nameMap.Add(new AuthFile(key, file));
+                    var key = BuildFile(file, body);
+                    nameMap.Add(new AuthFile(key, body));
                 }
 
+                using (var output = File.Create(target))
+                {
+                    using (var h = File.OpenRead(header))
+                    {
+                        var bytes = new byte[h.Length];
+                        h.Read(bytes, 0, bytes.Length);
+                        output.Write(bytes, 0, bytes.Length);
+                    }
 
+                    using (var b = File.OpenRead(body))
+                    {
+                        var bytes = new byte[b.Length];
+                        b.Read(bytes, 0, bytes.Length);
+                        output.Write(bytes, 0, bytes.Length);
+                    }
+
+                    File.Delete(body);
+
+                    {
+                        var bytes = Encoding.GetEncoding(1251).GetBytes("\\end{document}");
+                        output.Write(bytes, 0, bytes.Length);
+                        output.Flush();
+                    }
+                }
 
                 return true;
             }
@@ -45,6 +78,92 @@ namespace cm
                 Log.Error("Ошибка сборки", e);
                 return false;
             }
+        }
+
+        private const string TitleTag = "\\title";
+
+        private const string FinalTag = "\\end";
+
+        private string BuildFile(string file, string target)
+        {
+            var builder = new StringBuilder(256);
+
+            using (var output = File.AppendText(target))
+            {
+                output.WriteLine("%");
+                output.WriteLine($"% --==[ {file} ]==--");
+                output.WriteLine("%");
+
+                using (var reader = new StreamReader(file, Encoding.GetEncoding(1251)))
+                {
+                    var body = false;
+                    while (!reader.EndOfStream)
+                    {
+                        var token = GetToken(reader);
+                        if (string.IsNullOrEmpty(token))
+                            continue;
+
+                        if (token == "\\")
+                            token = string.Concat(token, GetToken(reader));
+
+                        if (token.Trim().ToLower() == TitleTag)
+                            body = true;
+
+                        if (token.Trim().ToLower() == FinalTag)
+                        {
+                            var sb = new StringBuilder(token);
+                            while (token != "{")
+                            {
+                                token = GetToken(reader);
+                                sb.Append(token);
+                            }
+
+                            while (token != "}")
+                            {
+                                token = GetToken(reader);
+                                sb.Append(token);
+                                if (token.Trim().ToLower() == "document")
+                                    body = false;
+                            }
+
+                            if (!body)
+                                break;
+
+                            output.Write(sb.ToString());
+                        }
+                        else if (body)
+                            output.Write(token);
+
+                        if (token.Trim().ToLower() == AuthorTag)
+                        {
+                            while (token != "{")
+                            {
+                                token = GetToken(reader);
+                                output.Write(token);
+                            }
+
+                            token = GetToken(reader);
+                            output.Write(token);
+
+                            while (token != "\\" && token != "}")
+                            {
+                                builder.Append(token.Replace("\r\n", " ").Replace("\r", " ").Replace("\n", " ")
+                                    .Replace("\t", " "));
+                                token = GetToken(reader);
+                                output.Write(token);
+                            }
+                        }
+                    }
+                }
+
+                output.Flush();
+            }
+
+            var result = builder.ToString().Trim();
+
+            return (result[0] > 'а' && result[0] < 'я')
+                ? CyrillicName(result)
+                : LatinName(result);
         }
 
         #endregion
@@ -77,21 +196,23 @@ namespace cm
             }
         }
 
-        private const string AuthorTag = "author";
+        private const string AuthorTag = "\\author";
 
         private string GetAuthor(string file)
         {
             var builder = new StringBuilder(256);
             using (var reader = new StreamReader(file, Encoding.GetEncoding(1251)))
             {
-                var tag = false;
                 while (!reader.EndOfStream)
                 {
                     var token = GetToken(reader);
                     if (string.IsNullOrEmpty(token))
                         continue;
 
-                    if (tag && token.Trim().ToLower() == AuthorTag)
+                    if (token == "\\")
+                        token = string.Concat(token, GetToken(reader));
+
+                    if (token.Trim().ToLower() == AuthorTag)
                     {
                         while (token != "{")
                             token = GetToken(reader);
@@ -105,8 +226,6 @@ namespace cm
                         }
                         break;
                     }
-
-                    tag = token == "\\";
                 }
             }
 
