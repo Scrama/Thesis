@@ -33,6 +33,8 @@ namespace cm
             if (string.IsNullOrEmpty(target))
                 throw new ArgumentNullException(nameof(target), @"Путь к результирующему файлу должен быть валидным");
 
+            Log.Info($"Начало сборки {target}");
+
             try
             {
                 var nameMap = new List<AuthFile>();
@@ -40,8 +42,11 @@ namespace cm
                 if (File.Exists(body))
                     File.Delete(body);
 
+                Log.Info($"Временный файл: {body}");
+
                 foreach (var file in Files)
                 {
+                    Log.Info($"Сборка {file}");
                     var key = BuildFile(file, body);
                     nameMap.Add(new AuthFile(key, body));
                 }
@@ -50,6 +55,7 @@ namespace cm
                 {
                     using (var h = File.OpenRead(header))
                     {
+                        Log.Info($"Вывод заголовка {header}");
                         var bytes = new byte[h.Length];
                         h.Read(bytes, 0, bytes.Length);
                         output.Write(bytes, 0, bytes.Length);
@@ -57,18 +63,22 @@ namespace cm
 
                     using (var b = File.OpenRead(body))
                     {
+                        Log.Info($"Вывод статей {body}");
                         var bytes = new byte[b.Length];
                         b.Read(bytes, 0, bytes.Length);
                         output.Write(bytes, 0, bytes.Length);
                     }
 
                     File.Delete(body);
+                    Log.Info($"Временный файл {body} удален");
 
                     {
                         var bytes = Encoding.GetEncoding(1251).GetBytes("\\end{document}");
                         output.Write(bytes, 0, bytes.Length);
                         output.Flush();
                     }
+                    Log.Info($"Сборка {target} завершена");
+
                 }
 
                 return true;

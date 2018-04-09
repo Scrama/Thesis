@@ -183,20 +183,25 @@ namespace cm
         public void ReleaseButtons(bool success, string log)
         {
             BeginInvoke(new Action(() =>
-                {
-                    _building = false;
-                    ValidateButtons();
+            {
+                _building = false;
+                ValidateButtons();
 
-                    if (success)
-                        MessageBox.Show(this, @"Сборка прошла успешно", @"Ура!");
-                    else
-                    {
-                        if (MessageBox.Show(this, "Что-то пошло не так :(\nОткрыть лог?", @"Ой!",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Error) == DialogResult.Yes)
-                            Process.Start(log);
-                    }
-                })
+                if (success)
+                {
+                    if (MessageBox.Show(this, "Сборка прошла успешно\nОткрыть лог?", @"Ура!",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information) == DialogResult.Yes)
+                        Process.Start(log);
+                }
+                else
+                {
+                    if (MessageBox.Show(this, "Что-то пошло не так :(\nОткрыть лог?", @"Ой!",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Error) == DialogResult.Yes)
+                        Process.Start(log);
+                }
+            })
             );
         }
 

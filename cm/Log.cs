@@ -12,6 +12,7 @@ namespace cm
         Warning,
         Info
     }
+    [SuppressMessage("ReSharper", "LocalizableElement")]
     public sealed class Log
     {
         private static Log _instance;
@@ -36,7 +37,7 @@ namespace cm
 
         private Log()
         {
-            _path = Path.ChangeExtension(Application.ExecutablePath, $".{DateTime.Now:yyyyMMddHH24mmss}.log");
+            _path = Path.ChangeExtension(Application.ExecutablePath, $".{DateTime.Now:yyyyMMddHHmmss}.log");
         }
 
         private readonly string _path;
@@ -55,7 +56,7 @@ namespace cm
         {
             try
             {
-                File.AppendAllText(Instance._path, $@"{DateTime.Now:yyyyMMdd HH24:mm:ss} {Instance._typeMap[msgType]} {message}\n");
+                File.AppendAllText(Instance._path, $"{DateTime.Now:yyyyMMdd HH:mm:ss.fff} {Instance._typeMap[msgType]} {message}\n");
             }
             catch(Exception)
             { }

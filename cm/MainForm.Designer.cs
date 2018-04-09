@@ -152,7 +152,7 @@
             this._buttonDown.Name = "_buttonDown";
             this._buttonDown.Size = new System.Drawing.Size(30, 25);
             this._buttonDown.TabIndex = 1;
-            this._buttonDown.Text = "dn";
+            this._buttonDown.Text = "↓";
             this._buttonDown.UseVisualStyleBackColor = true;
             // 
             // _buttonUp
@@ -162,7 +162,7 @@
             this._buttonUp.Name = "_buttonUp";
             this._buttonUp.Size = new System.Drawing.Size(30, 25);
             this._buttonUp.TabIndex = 0;
-            this._buttonUp.Text = "up";
+            this._buttonUp.Text = "↑";
             this._buttonUp.UseVisualStyleBackColor = true;
             // 
             // right
