@@ -1,136 +1,76 @@
-I'm a header-weader!
-\looks{like i have a tags}
-and some strings
+\documentclass[12pt,twoside]{article}
+\usepackage{amsmath,amsthm,amsfonts}
+\usepackage{amssymb,amsmath}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+
+%\usepackage{latexsym}
+
+\textwidth=160mm \textheight=243mm
+\newcommand{\BI}[1]{\mbox{\boldmath $#1$}}
+
+\newcommand{\aforall}{\ensuremath{\overset{\circ}{\forall}}}
+\newcommand{\eqd}{\mathop{=}\limits^\triangle}
+\def\RR{\mbox{\rm I\hspace*{-.2em}R}}
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}{Следствие}
+\newcommand{\bleq}[2]{\begin{equation}\label{#1}#2\end{equation}}
+
+\oddsidemargin  6mm \evensidemargin -5mm \topmargin -10mm
+%\footskip 10mm
+\pagestyle{myheadings}
+\raggedbottom
+
+\newcommand{\lll}
+{\vfill \noindent
+-----------------------------------------------------------------------------------------------------------------\\
+}
+%$\mbox{\boldmath$J$}
+\clubpenalty=10000 \widowpenalty=10000
+
+\begin{document}
+%\pagebreak
+%\thispagestyle{empty}
+%\begin{center} СОДЕРЖАНИЕ \end{center}
+%\vspace{15mm}
+%{\bf Пленарные и полупленарные доклады} \dotfill \pageref{Plen} \\[3mm]
+%{\bf Дискретная оптимизация} \dotfill \pageref{SekDO} \\[3mm]
+%{\bf Непрерывная оптимизация} \dotfill \pageref{SekCO} \\[3mm]
+%{\bf Экономико-математическое
+%моделирование и теория игр} \dotfill \pageref{SekMM} \\[3mm]
+%{\bf Прикладные исследования} \dotfill \pageref{SekAI} \\[3mm]
+%{\bf Список авторов} \dotfill \pageref{List} \\
+\setcounter{page}{5} \pagebreak
+
 %
-% --==[ F:\Projects\thesis\Тех файлы\27_Chernih_Kononov.tex ]==--
-%
-\title{Exact polynomial-time algorithm for the two-machine routing flow shop problem with a restricted transportation network
-\thanks{This research was supported by RFBR grant 17-07-00513 and 18-01-00474.} }
-%
-\titlerunning{Short Title}  % abbreviated title (for running head)
-%                                     also used for the TOC unless
-%                                     \toctitle is used
-%
-\author{Ilya Chernykh\inst{1,2,3} \and
-Alexander Kononov\inst{1,2} \and
-Sergey Sevastyanov\inst{1,2}} 
-%
-\authorrunning{Ilya Chernykh, Alexander Kononov and Sergey Sevastyanov } % abbreviated author list (for running head)
-%
-%
-\institute{Sobolev Institute of Mathematics, Novosibirsk, Russia\\
-\email{idchern@math.nsc.ru, alvenko@math.nsc.ru, seva@math.nsc.ru}
- \and
-Novosibirsk State University, Novosibirsk, Russia\\
-Novosibirsk State Technical University, Novosibirsk, Russia \\
- }
-
-\maketitle              % typeset the title of the contribution
-
-\keywords{shop scheduling, routing, dynamic programming}
-\\
-
-We consider the routing flow shop problem being a generalization of the flow shop and the metric travelling salesman problems.
-The jobs are located at nodes of some transportation network, and the machines travel on the network to execute the jobs in the flow shop environment. 
-The machines are initially located at the same node (depot) and must return to the depot after completing all the jobs. 
-It is required to find a non- preemptive schedule with the minimal makespan.
-
-The routing flow shop problem was introduced by Averbakh and Berman \cite{AverbakhBerman}. 
-It is strongly NP-hard even in the single machine case as it contains the metric TSP as a special case.
-Yu et al. \cite{Yu} proved that the two-machine routing flow shop is ordinary NP-hard when the transportation network is a tree
-with unbounded number of nodes, i.e. the number of nodes is a linear function on the number of jobs.
-
-In our paper we consider the two-machine routing flow shop under the assumption that a transportation network is an arbitrary undirected graph with a constant number of vertices. 
-We present an exact polynomial-time algorithm for this case based on dynamic programming. 
-This stands in contrast to the complexity result for the two-machine routing open shop problem
-that is NP-hard even on the two-node network \cite{ABC}.
-
-
-
-
-
-
-\begin{thebibliography}{1}
-\providecommand{\url}[1]{\texttt{#1}}
-\providecommand{\urlprefix}{URL }
-
-\bibitem{AverbakhBerman}
-Averbakh, I., Berman, O.:  Routing two-machine flow shop problems on networks with special structure. Transportation Science 30, 303--314 (1996).
-\bibitem{ABC} 
-Averbakh I, Berman O, Chernykh I: The routing open-shop problem on a network: complexity and approximation. European Journal of Operational Research 173(2), 521--39 (2006).
-\bibitem{Yu}
-Yu W., Liu Z., Wang L., Fan T.: Routing open shop and flow shop scheduling problems. European Journal of Operational Research 213, 24-36 (2011).
-
-
-\end{thebibliography}
-%
-% --==[ F:\Projects\thesis\Тех файлы\119_Romanova.tex ]==--
-%
-\title{Минимизация затрат  в задаче календарного планирования со
-складируемыми ресурсами }
-%
-\titlerunning{Краткое название}  % abbreviated title (for running head)
-%                                     also used for the TOC unless
-%                                     \toctitle is used
-%
-\author{Анна А. Романова \inst{1,}\inst{2}, Татьяна А. Сергиенко \inst{1,}\inst{2}}
-%
-\authorrunning{Романова А.А., Сергиенко Т. А.} % abbreviated author list (for running head)
+% Дальше идет сгенерированный контент
 %
 %
-\institute{Омская юридическая академия, Омск, Россия,\\
- \and
-Омский государственный университет им. Ф.М. Достоевского, Омск, Россия,\\
-\email{anna.a.r@bk.ru} }
+\pagebreak
+\setcounter{equation}{0}
+\label{lbl101} \label{lbl102} \label{lbl103} % Ilya Chernykh % Alexander Kononov % Sergey Sevastyanov
+\input{27_Chernih_Kononov.converted}
+%
+\pagebreak
+\setcounter{equation}{0}
+\label{lbl104} \label{lbl105} % Анна А. Романова % Татьяна А. Сергиенко
+\input{119_Romanova.converted}
 
-\maketitle              % typeset the title of the contribution
-
-\textbf{Ключевые слова:} вычислительная сложность, календарное
-планирование, динамическое программирование \\
-
-В работе рассматривается следующая задача календарного
-планирования. Имеется проект, состоящий из $n$ взаимосвязанных
-работ, для выполнения которых требуются складируемые ресурсы $m$
-видов. Взаимосвязь между работами задается ориентированным графом
-$G=(V,E)$, где $V$ -- множество вершин-работ; дуга $(i,j)\in E$,
-если работа $j$ не может начаться до завершения работы $i$. Для
-каждой работы $j\in V$ известны ее длительность $p_{j} \in Z^+$ и
-потребность $q_{jr}$ в ресурсе $r$ в каждый период времени
-выполнения, $r=1,\ldots,m$. Для выполнения работ ресурс $r$  в
-любой период времени можно приобрести по обычной цене
-$C^{norm}_r$, если объем покупаемого ресурса не превышает
-$V^{norm}_r$. При превышении этого уровня устанавливается новая
-цена $C^{over}_r$ за единицу ресурса. Требуется определить
-допустимое расписание выполнения работ проекта и план закупок
-ресурсов, при которых суммарные затраты на приобретение ресурсов
-минимальны. В работе рассматриваются случаи неограниченного и
-ограниченного склада. В первом случае в каждый период времени
-можно складировать любое количество ресурса. При ограниченном
-складе излишек ресурса $r$, то есть ресурс, который предполагается
-потратить позже, в каждый период времени не должен превышать
-объема $V^{cont}_r$ склада. 
-Ранее в ряде случаев установлена
-сложность задачи. В частности, показано, что при ограниченном
-складе как при $C^{over}_r>C^{norm}_r$, так и при
-$C^{over}_r<C^{norm}_r$ задача NP-трудна, при неограниченном --
-полиномиально разрешима \cite{romanova_R,romanova_PR}.
-В настоящей работе продолжено исследование данной задачи.
-Предложены модели целочисленного программирования для случая
-ограниченного склада; разработаны алгоритмы динамического
-программирования; выделены малотрудоемкие частные случаи.
-\begin{thebibliography}{1}
-\providecommand{\url}[1]{\texttt{#1}}
-\providecommand{\urlprefix}{URL }
-
-\bibitem{romanova_R}
-Романова, А.А.: Исследование одной задачи календарного
-планирования со складируемыми ресурсами. Динамика систем,
-механизмов и машин : матер. VIII Междунар. науч.-техн. конф, с.
-88--91.  Омск : Изд-во ОмГТУ (2012)
-\bibitem{romanova_PR}
-Пирогов, А.Ю., Романова, А.А.: О сложности одной задачи построения
-расписания с минимальными затратами на приобретение ресурсов.
-Россия молодая: передовые технологии -- в промышленность, \No 3,
-с. 69-73 (2015)
-\end{thebibliography}
+%------------------------------------------------------------------------------
+\pagebreak
+\markboth{ }{ }
+\vspace{-10mm}
+\begin{center} СПИСОК АВТОРОВ \end{center}
+\vspace{-5mm}
+\label{List}
+\vspace{5mm}
+\noindent
+\\Анна А. Романова \dotfill \pageref{lbl104}
+\\Татьяна А. Сергиенко \dotfill \pageref{lbl105}
+\\Alexander Kononov \dotfill \pageref{lbl102}
+\\Ilya Chernykh \dotfill \pageref{lbl101}
+\\Sergey Sevastyanov \dotfill \pageref{lbl103}
 \end{document}
