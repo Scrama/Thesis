@@ -8,9 +8,9 @@ namespace cm
         event EventHandler Load;
         event EventHandler Closed;
         event EventHandler FilesAdding;
-        event EventHandler<int> FilesRemoving;
-        event EventHandler<int> FileUp;
-        event EventHandler<int> FileDown;
+        event EventHandler<ValueEventArg<int>> FilesRemoving;
+        event EventHandler<ValueEventArg<int>> FileUp;
+        event EventHandler<ValueEventArg<int>> FileDown;
         event EventHandler HeaderBrowsing;
         event EventHandler TargetBrowsing;
         event EventHandler Building;

@@ -65,8 +65,9 @@ namespace cm
             _view.Select(-1);
         }
 
-        private void FileDown(object sender, int index)
+        private void FileDown(object sender, ValueEventArg<int> arg)
         {
+            var index = arg.Value;
             if (index < 0 || index > _model.Files.Count - 2)
                 return;
 
@@ -78,8 +79,9 @@ namespace cm
             _view.Select(index + 1);
         }
 
-        private void FileUp(object sender, int index)
+        private void FileUp(object sender, ValueEventArg<int> arg)
         {
+            var index = arg.Value;
             if (index < 1 || index >= _model.Files.Count)
                 return;
 
@@ -91,8 +93,9 @@ namespace cm
             _view.Select(index - 1);
         }
 
-        private void RemoveFile(object sender, int index)
+        private void RemoveFile(object sender, ValueEventArg<int> arg)
         {
+            var index = arg.Value;
             if (index < 0 || index >= _model.Files.Count)
                 return;
 
