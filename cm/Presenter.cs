@@ -28,7 +28,11 @@ namespace cm
             _view.TargetBrowsing += TargetBrowsing;
             _view.Building += StartBuilding;
 
-            _view.Load += (sender, args) => LoadSettings();
+            _view.Load += (sender, args) =>
+            {
+                LoadSettings();
+                Log.AddExtraLogger(_view.Log);
+            };
             _view.Closed += (sender, args) => SaveSettings();
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace cm
@@ -208,6 +209,15 @@ namespace cm
         private void AboutClick(object sender, EventArgs e)
         {
             MessageBox.Show(this, @"Текст о программе", @"О программе");
+        }
+
+        public void Log(string message)
+        {
+            BeginInvoke(new Action(() =>
+            {
+                var skip = _log.Lines.Length > 19 ? _log.Lines.Length - 19 : 0;
+                _log.Lines = _log.Lines.Skip(skip).Concat(new [] {message}).ToArray();
+            }));
         }
     }
 }

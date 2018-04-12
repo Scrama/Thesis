@@ -29,35 +29,39 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.TableLayoutPanel layout;
-            System.Windows.Forms.Panel left;
-            System.Windows.Forms.GroupBox groupData;
             System.Windows.Forms.Panel right;
             System.Windows.Forms.GroupBox groupTarget;
             System.Windows.Forms.GroupBox groupHeader;
-            this._listData = new System.Windows.Forms.ListBox();
-            this._buttonAdd = new System.Windows.Forms.Button();
-            this._buttonRemove = new System.Windows.Forms.Button();
-            this._buttonSort = new System.Windows.Forms.Button();
-            this._buttonDown = new System.Windows.Forms.Button();
-            this._buttonUp = new System.Windows.Forms.Button();
+            System.Windows.Forms.Panel left;
+            System.Windows.Forms.GroupBox groupData;
+            System.Windows.Forms.GroupBox groupBox;
             this._build = new System.Windows.Forms.Button();
             this._about = new System.Windows.Forms.Button();
             this._target = new System.Windows.Forms.TextBox();
             this._browseTarget = new System.Windows.Forms.Button();
             this._header = new System.Windows.Forms.TextBox();
             this._browseHeader = new System.Windows.Forms.Button();
+            this._listData = new System.Windows.Forms.ListBox();
+            this._buttonAdd = new System.Windows.Forms.Button();
+            this._buttonRemove = new System.Windows.Forms.Button();
+            this._buttonSort = new System.Windows.Forms.Button();
+            this._buttonDown = new System.Windows.Forms.Button();
+            this._buttonUp = new System.Windows.Forms.Button();
+            this._log = new System.Windows.Forms.TextBox();
             layout = new System.Windows.Forms.TableLayoutPanel();
-            left = new System.Windows.Forms.Panel();
-            groupData = new System.Windows.Forms.GroupBox();
             right = new System.Windows.Forms.Panel();
             groupTarget = new System.Windows.Forms.GroupBox();
             groupHeader = new System.Windows.Forms.GroupBox();
+            left = new System.Windows.Forms.Panel();
+            groupData = new System.Windows.Forms.GroupBox();
+            groupBox = new System.Windows.Forms.GroupBox();
             layout.SuspendLayout();
-            left.SuspendLayout();
-            groupData.SuspendLayout();
             right.SuspendLayout();
             groupTarget.SuspendLayout();
             groupHeader.SuspendLayout();
+            left.SuspendLayout();
+            groupData.SuspendLayout();
+            groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // layout
@@ -75,98 +79,9 @@
             layout.Size = new System.Drawing.Size(797, 478);
             layout.TabIndex = 9;
             // 
-            // left
-            // 
-            left.Controls.Add(groupData);
-            left.Dock = System.Windows.Forms.DockStyle.Fill;
-            left.Location = new System.Drawing.Point(3, 3);
-            left.Name = "left";
-            left.Padding = new System.Windows.Forms.Padding(8);
-            left.Size = new System.Drawing.Size(392, 472);
-            left.TabIndex = 8;
-            // 
-            // groupData
-            // 
-            groupData.AccessibleRole = System.Windows.Forms.AccessibleRole.Border;
-            groupData.Controls.Add(this._listData);
-            groupData.Controls.Add(this._buttonAdd);
-            groupData.Controls.Add(this._buttonRemove);
-            groupData.Controls.Add(this._buttonSort);
-            groupData.Controls.Add(this._buttonDown);
-            groupData.Controls.Add(this._buttonUp);
-            groupData.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupData.Location = new System.Drawing.Point(8, 8);
-            groupData.Margin = new System.Windows.Forms.Padding(10);
-            groupData.Name = "groupData";
-            groupData.Size = new System.Drawing.Size(376, 456);
-            groupData.TabIndex = 1;
-            groupData.TabStop = false;
-            groupData.Text = "Входные данные";
-            // 
-            // _listData
-            // 
-            this._listData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._listData.FormattingEnabled = true;
-            this._listData.Location = new System.Drawing.Point(8, 19);
-            this._listData.Margin = new System.Windows.Forms.Padding(8);
-            this._listData.Name = "_listData";
-            this._listData.Size = new System.Drawing.Size(362, 381);
-            this._listData.TabIndex = 5;
-            // 
-            // _buttonAdd
-            // 
-            this._buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonAdd.Location = new System.Drawing.Point(300, 423);
-            this._buttonAdd.Name = "_buttonAdd";
-            this._buttonAdd.Size = new System.Drawing.Size(70, 25);
-            this._buttonAdd.TabIndex = 4;
-            this._buttonAdd.Text = "Добавить";
-            this._buttonAdd.UseVisualStyleBackColor = true;
-            // 
-            // _buttonRemove
-            // 
-            this._buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonRemove.Location = new System.Drawing.Point(224, 423);
-            this._buttonRemove.Name = "_buttonRemove";
-            this._buttonRemove.Size = new System.Drawing.Size(70, 25);
-            this._buttonRemove.TabIndex = 3;
-            this._buttonRemove.Text = "Убрать";
-            this._buttonRemove.UseVisualStyleBackColor = true;
-            // 
-            // _buttonSort
-            // 
-            this._buttonSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._buttonSort.Location = new System.Drawing.Point(80, 423);
-            this._buttonSort.Name = "_buttonSort";
-            this._buttonSort.Size = new System.Drawing.Size(80, 25);
-            this._buttonSort.TabIndex = 2;
-            this._buttonSort.Text = "Сортировать";
-            this._buttonSort.UseVisualStyleBackColor = true;
-            // 
-            // _buttonDown
-            // 
-            this._buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._buttonDown.Location = new System.Drawing.Point(44, 423);
-            this._buttonDown.Name = "_buttonDown";
-            this._buttonDown.Size = new System.Drawing.Size(30, 25);
-            this._buttonDown.TabIndex = 1;
-            this._buttonDown.Text = "↓";
-            this._buttonDown.UseVisualStyleBackColor = true;
-            // 
-            // _buttonUp
-            // 
-            this._buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._buttonUp.Location = new System.Drawing.Point(8, 423);
-            this._buttonUp.Name = "_buttonUp";
-            this._buttonUp.Size = new System.Drawing.Size(30, 25);
-            this._buttonUp.TabIndex = 0;
-            this._buttonUp.Text = "↑";
-            this._buttonUp.UseVisualStyleBackColor = true;
-            // 
             // right
             // 
+            right.Controls.Add(groupBox);
             right.Controls.Add(this._build);
             right.Controls.Add(this._about);
             right.Controls.Add(groupTarget);
@@ -262,6 +177,122 @@
             this._browseHeader.Text = "Найти";
             this._browseHeader.UseVisualStyleBackColor = true;
             // 
+            // left
+            // 
+            left.Controls.Add(groupData);
+            left.Dock = System.Windows.Forms.DockStyle.Fill;
+            left.Location = new System.Drawing.Point(3, 3);
+            left.Name = "left";
+            left.Padding = new System.Windows.Forms.Padding(8);
+            left.Size = new System.Drawing.Size(392, 472);
+            left.TabIndex = 8;
+            // 
+            // groupData
+            // 
+            groupData.AccessibleRole = System.Windows.Forms.AccessibleRole.Border;
+            groupData.Controls.Add(this._listData);
+            groupData.Controls.Add(this._buttonAdd);
+            groupData.Controls.Add(this._buttonRemove);
+            groupData.Controls.Add(this._buttonSort);
+            groupData.Controls.Add(this._buttonDown);
+            groupData.Controls.Add(this._buttonUp);
+            groupData.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupData.Location = new System.Drawing.Point(8, 8);
+            groupData.Margin = new System.Windows.Forms.Padding(10);
+            groupData.Name = "groupData";
+            groupData.Size = new System.Drawing.Size(376, 456);
+            groupData.TabIndex = 1;
+            groupData.TabStop = false;
+            groupData.Text = "Входные данные";
+            // 
+            // _listData
+            // 
+            this._listData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._listData.FormattingEnabled = true;
+            this._listData.Location = new System.Drawing.Point(8, 19);
+            this._listData.Margin = new System.Windows.Forms.Padding(8);
+            this._listData.Name = "_listData";
+            this._listData.Size = new System.Drawing.Size(362, 381);
+            this._listData.TabIndex = 5;
+            // 
+            // _buttonAdd
+            // 
+            this._buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonAdd.Location = new System.Drawing.Point(300, 423);
+            this._buttonAdd.Name = "_buttonAdd";
+            this._buttonAdd.Size = new System.Drawing.Size(70, 25);
+            this._buttonAdd.TabIndex = 4;
+            this._buttonAdd.Text = "Добавить";
+            this._buttonAdd.UseVisualStyleBackColor = true;
+            // 
+            // _buttonRemove
+            // 
+            this._buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonRemove.Location = new System.Drawing.Point(224, 423);
+            this._buttonRemove.Name = "_buttonRemove";
+            this._buttonRemove.Size = new System.Drawing.Size(70, 25);
+            this._buttonRemove.TabIndex = 3;
+            this._buttonRemove.Text = "Убрать";
+            this._buttonRemove.UseVisualStyleBackColor = true;
+            // 
+            // _buttonSort
+            // 
+            this._buttonSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._buttonSort.Location = new System.Drawing.Point(80, 423);
+            this._buttonSort.Name = "_buttonSort";
+            this._buttonSort.Size = new System.Drawing.Size(80, 25);
+            this._buttonSort.TabIndex = 2;
+            this._buttonSort.Text = "Сортировать";
+            this._buttonSort.UseVisualStyleBackColor = true;
+            // 
+            // _buttonDown
+            // 
+            this._buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._buttonDown.Location = new System.Drawing.Point(44, 423);
+            this._buttonDown.Name = "_buttonDown";
+            this._buttonDown.Size = new System.Drawing.Size(30, 25);
+            this._buttonDown.TabIndex = 1;
+            this._buttonDown.Text = "↓";
+            this._buttonDown.UseVisualStyleBackColor = true;
+            // 
+            // _buttonUp
+            // 
+            this._buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._buttonUp.Location = new System.Drawing.Point(8, 423);
+            this._buttonUp.Name = "_buttonUp";
+            this._buttonUp.Size = new System.Drawing.Size(30, 25);
+            this._buttonUp.TabIndex = 0;
+            this._buttonUp.Text = "↑";
+            this._buttonUp.UseVisualStyleBackColor = true;
+            // 
+            // groupBox
+            // 
+            groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            groupBox.Controls.Add(this._log);
+            groupBox.Location = new System.Drawing.Point(8, 188);
+            groupBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
+            groupBox.Name = "groupBox";
+            groupBox.Size = new System.Drawing.Size(377, 220);
+            groupBox.TabIndex = 9;
+            groupBox.TabStop = false;
+            groupBox.Text = "Консоль";
+            // 
+            // _log
+            // 
+            this._log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._log.Location = new System.Drawing.Point(3, 16);
+            this._log.Margin = new System.Windows.Forms.Padding(10);
+            this._log.Multiline = true;
+            this._log.Name = "_log";
+            this._log.ReadOnly = true;
+            this._log.Size = new System.Drawing.Size(371, 201);
+            this._log.TabIndex = 10;
+            this._log.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,13 +303,15 @@
             this.Name = "MainForm";
             this.Text = "Сборник";
             layout.ResumeLayout(false);
-            left.ResumeLayout(false);
-            groupData.ResumeLayout(false);
             right.ResumeLayout(false);
             groupTarget.ResumeLayout(false);
             groupTarget.PerformLayout();
             groupHeader.ResumeLayout(false);
             groupHeader.PerformLayout();
+            left.ResumeLayout(false);
+            groupData.ResumeLayout(false);
+            groupBox.ResumeLayout(false);
+            groupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -297,6 +330,7 @@
         private System.Windows.Forms.Button _buttonSort;
         private System.Windows.Forms.Button _buttonDown;
         private System.Windows.Forms.Button _buttonUp;
+        private System.Windows.Forms.TextBox _log;
     }
 }
 

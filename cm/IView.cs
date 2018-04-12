@@ -23,5 +23,6 @@ namespace cm
         void ReleaseButtons(bool success, string log);
         string Header { get; set; }
         string Target { get; set; }
+        void Log(string message);
     }
 }
