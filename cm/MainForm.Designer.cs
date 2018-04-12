@@ -30,11 +30,12 @@
         {
             System.Windows.Forms.TableLayoutPanel layout;
             System.Windows.Forms.Panel right;
+            System.Windows.Forms.GroupBox groupBox;
             System.Windows.Forms.GroupBox groupTarget;
             System.Windows.Forms.GroupBox groupHeader;
             System.Windows.Forms.Panel left;
             System.Windows.Forms.GroupBox groupData;
-            System.Windows.Forms.GroupBox groupBox;
+            this._log = new System.Windows.Forms.TextBox();
             this._build = new System.Windows.Forms.Button();
             this._about = new System.Windows.Forms.Button();
             this._target = new System.Windows.Forms.TextBox();
@@ -47,21 +48,22 @@
             this._buttonSort = new System.Windows.Forms.Button();
             this._buttonDown = new System.Windows.Forms.Button();
             this._buttonUp = new System.Windows.Forms.Button();
-            this._log = new System.Windows.Forms.TextBox();
+            this._gotoHeader = new System.Windows.Forms.Button();
+            this._gotoTarget = new System.Windows.Forms.Button();
             layout = new System.Windows.Forms.TableLayoutPanel();
             right = new System.Windows.Forms.Panel();
+            groupBox = new System.Windows.Forms.GroupBox();
             groupTarget = new System.Windows.Forms.GroupBox();
             groupHeader = new System.Windows.Forms.GroupBox();
             left = new System.Windows.Forms.Panel();
             groupData = new System.Windows.Forms.GroupBox();
-            groupBox = new System.Windows.Forms.GroupBox();
             layout.SuspendLayout();
             right.SuspendLayout();
+            groupBox.SuspendLayout();
             groupTarget.SuspendLayout();
             groupHeader.SuspendLayout();
             left.SuspendLayout();
             groupData.SuspendLayout();
-            groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // layout
@@ -93,6 +95,32 @@
             right.Size = new System.Drawing.Size(393, 472);
             right.TabIndex = 9;
             // 
+            // groupBox
+            // 
+            groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            groupBox.Controls.Add(this._log);
+            groupBox.Location = new System.Drawing.Point(8, 188);
+            groupBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
+            groupBox.Name = "groupBox";
+            groupBox.Size = new System.Drawing.Size(377, 220);
+            groupBox.TabIndex = 9;
+            groupBox.TabStop = false;
+            groupBox.Text = "Консоль";
+            // 
+            // _log
+            // 
+            this._log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._log.Location = new System.Drawing.Point(3, 16);
+            this._log.Margin = new System.Windows.Forms.Padding(10);
+            this._log.Multiline = true;
+            this._log.Name = "_log";
+            this._log.ReadOnly = true;
+            this._log.Size = new System.Drawing.Size(371, 201);
+            this._log.TabIndex = 10;
+            this._log.TabStop = false;
+            // 
             // _build
             // 
             this._build.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -115,6 +143,7 @@
             // 
             // groupTarget
             // 
+            groupTarget.Controls.Add(this._gotoTarget);
             groupTarget.Controls.Add(this._target);
             groupTarget.Controls.Add(this._browseTarget);
             groupTarget.Dock = System.Windows.Forms.DockStyle.Top;
@@ -147,6 +176,7 @@
             // 
             // groupHeader
             // 
+            groupHeader.Controls.Add(this._gotoHeader);
             groupHeader.Controls.Add(this._header);
             groupHeader.Controls.Add(this._browseHeader);
             groupHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -267,31 +297,25 @@
             this._buttonUp.Text = "↑";
             this._buttonUp.UseVisualStyleBackColor = true;
             // 
-            // groupBox
+            // _gotoHeader
             // 
-            groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            groupBox.Controls.Add(this._log);
-            groupBox.Location = new System.Drawing.Point(8, 188);
-            groupBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
-            groupBox.Name = "groupBox";
-            groupBox.Size = new System.Drawing.Size(377, 220);
-            groupBox.TabIndex = 9;
-            groupBox.TabStop = false;
-            groupBox.Text = "Консоль";
+            this._gotoHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._gotoHeader.Location = new System.Drawing.Point(206, 59);
+            this._gotoHeader.Name = "_gotoHeader";
+            this._gotoHeader.Size = new System.Drawing.Size(90, 25);
+            this._gotoHeader.TabIndex = 7;
+            this._gotoHeader.Text = "Проводник";
+            this._gotoHeader.UseVisualStyleBackColor = true;
             // 
-            // _log
+            // _gotoTarget
             // 
-            this._log.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._log.Location = new System.Drawing.Point(3, 16);
-            this._log.Margin = new System.Windows.Forms.Padding(10);
-            this._log.Multiline = true;
-            this._log.Name = "_log";
-            this._log.ReadOnly = true;
-            this._log.Size = new System.Drawing.Size(371, 201);
-            this._log.TabIndex = 10;
-            this._log.TabStop = false;
+            this._gotoTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._gotoTarget.Location = new System.Drawing.Point(206, 59);
+            this._gotoTarget.Name = "_gotoTarget";
+            this._gotoTarget.Size = new System.Drawing.Size(90, 25);
+            this._gotoTarget.TabIndex = 8;
+            this._gotoTarget.Text = "Проводник";
+            this._gotoTarget.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -301,17 +325,18 @@
             this.Controls.Add(layout);
             this.MinimumSize = new System.Drawing.Size(640, 400);
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.Text = "Сборник";
             layout.ResumeLayout(false);
             right.ResumeLayout(false);
+            groupBox.ResumeLayout(false);
+            groupBox.PerformLayout();
             groupTarget.ResumeLayout(false);
             groupTarget.PerformLayout();
             groupHeader.ResumeLayout(false);
             groupHeader.PerformLayout();
             left.ResumeLayout(false);
             groupData.ResumeLayout(false);
-            groupBox.ResumeLayout(false);
-            groupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,6 +356,8 @@
         private System.Windows.Forms.Button _buttonDown;
         private System.Windows.Forms.Button _buttonUp;
         private System.Windows.Forms.TextBox _log;
+        private System.Windows.Forms.Button _gotoTarget;
+        private System.Windows.Forms.Button _gotoHeader;
     }
 }
 

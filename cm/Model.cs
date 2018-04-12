@@ -72,6 +72,8 @@ namespace cm
 
             Log.Info($"Начало сборки {target}");
 
+            var targetDir = Path.GetDirectoryName(target);
+
             try
             {
                 var buildMap = new List<BuildResult>();
@@ -81,7 +83,10 @@ namespace cm
                 foreach (var file in Files)
                 {
                     Log.Info($"Сборка {file}");
-                    var body = Path.ChangeExtension(file, "converted.tex");
+                    var body = Path.Combine(
+                        targetDir,
+                        Path.ChangeExtension(Path.GetFileName(file), "converted.tex")
+                    );
                     if (File.Exists(body))
                         File.Delete(body);
 
@@ -169,7 +174,7 @@ namespace cm
 
         private void PutString(FileStream stream, string s)
         {
-            var bytes = Encoding.UTF8.GetBytes(s + "\n");
+            var bytes = Encoding.GetEncoding(1251).GetBytes(s + "\n");
             stream.Write(bytes, 0, bytes.Length);
         }
 
@@ -285,16 +290,18 @@ namespace cm
                         //Последнего автора
                         if (builder.Length > 0)
                         {
-                            var label = $"lbl{++_index}";
-
                             var author = builder.ToString().Trim();
 
-                            var al = labelMap.FirstOrDefault(x => x.Author == author);
-                            if (al != null)
-                                al.Labels.Add(label);
-                            else
-                                labelMap.Add(new AuthLabel(author, label));
-                            result.Add(label, author);
+                            if (!string.IsNullOrWhiteSpace(author))
+                            {
+                                var label = $"lbl{++_index}";
+                                var al = labelMap.FirstOrDefault(x => x.Author == author);
+                                if (al != null)
+                                    al.Labels.Add(label);
+                                else
+                                    labelMap.Add(new AuthLabel(author, label));
+                                result.Add(label, author);
+                            }
                         }
 
                         #endregion

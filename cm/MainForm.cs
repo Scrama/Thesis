@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,6 +20,10 @@ namespace cm
             _buttonRemove.Enabled = false;
             _buttonSort.Enabled = false;
             _build.Enabled = false;
+            _gotoHeader.Enabled = false;
+            _gotoTarget.Enabled = false;
+
+            new ToolTip().SetToolTip(_buttonSort, @"Сортировать по фамилии первого автора");
 
             _listData.SelectedIndexChanged += (sender, args) => ValidateButtons();
 
@@ -39,6 +44,23 @@ namespace cm
             _browseTarget.Click += TargetBrowseClick;
             _build.Click += BuildClick;
             _about.Click += AboutClick;
+            _gotoHeader.Click += GotoHeaderClick;
+            _gotoTarget.Click += GotoTargetClick;
+        }
+
+        private void GotoTargetClick(object sender, EventArgs e)
+        {
+            OpenFolder(Path.GetDirectoryName(_target.Text));
+        }
+
+        private void GotoHeaderClick(object sender, EventArgs e)
+        {
+            OpenFolder(Path.GetDirectoryName(_header.Text));
+        }
+
+        private void OpenFolder(string path)
+        {
+            Process.Start(path);
         }
 
         private bool _building;
@@ -54,6 +76,9 @@ namespace cm
                              && !string.IsNullOrEmpty(_header.Text)
                              && !string.IsNullOrEmpty(_target.Text)
                              && _listData.Items.Count > 0;
+
+            _gotoHeader.Enabled = !string.IsNullOrEmpty(_header.Text);
+            _gotoTarget.Enabled = !string.IsNullOrEmpty(_target.Text);
         }
 
         private void AddClick(object sender, EventArgs e)

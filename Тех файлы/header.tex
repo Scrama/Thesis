@@ -1,50 +1,54 @@
-\documentclass[12pt,twoside]{article}
-\usepackage{amsmath,amsthm,amsfonts}
-\usepackage{amssymb,amsmath}
-\usepackage[cp1251]{inputenc}
-\usepackage[T2A]{fontenc}
-\usepackage[russian]{babel}
-\usepackage{graphicx}
+\documentclass{llncs}
+%
+\usepackage{makeidx}  % allows for indexgeneration
+%
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\sloppy
 
-%\usepackage{latexsym}
 
-\textwidth=160mm \textheight=243mm
-\newcommand{\BI}[1]{\mbox{\boldmath $#1$}}
-
-\newcommand{\aforall}{\ensuremath{\overset{\circ}{\forall}}}
-\newcommand{\eqd}{\mathop{=}\limits^\triangle}
-\def\RR{\mbox{\rm I\hspace*{-.2em}R}}
-\newtheorem{theorem}{РўРµРѕСЂРµРјР°}
-\newtheorem{lemma}[theorem]{Р›РµРјРјР°}
-\newtheorem{corollary}{РЎР»РµРґСЃС‚РІРёРµ}
-\newcommand{\bleq}[2]{\begin{equation}\label{#1}#2\end{equation}}
-
-\oddsidemargin  6mm \evensidemargin -5mm \topmargin -10mm
 %\footskip 10mm
 \pagestyle{myheadings}
 \raggedbottom
-
 \newcommand{\lll}
 {\vfill \noindent
 -----------------------------------------------------------------------------------------------------------------\\
 }
 %$\mbox{\boldmath$J$}
-\clubpenalty=10000 \widowpenalty=10000
 
 \begin{document}
-%\pagebreak
-%\thispagestyle{empty}
-%\begin{center} РЎРћР”Р•Р Р–РђРќРР• \end{center}
-%\vspace{15mm}
-%{\bf РџР»РµРЅР°СЂРЅС‹Рµ Рё РїРѕР»СѓРїР»РµРЅР°СЂРЅС‹Рµ РґРѕРєР»Р°РґС‹} \dotfill \pageref{Plen} \\[3mm]
-%{\bf Р”РёСЃРєСЂРµС‚РЅР°СЏ РѕРїС‚РёРјРёР·Р°С†РёСЏ} \dotfill \pageref{SekDO} \\[3mm]
-%{\bf РќРµРїСЂРµСЂС‹РІРЅР°СЏ РѕРїС‚РёРјРёР·Р°С†РёСЏ} \dotfill \pageref{SekCO} \\[3mm]
-%{\bf Р­РєРѕРЅРѕРјРёРєРѕ-РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕРµ
-%РјРѕРґРµР»РёСЂРѕРІР°РЅРёРµ Рё С‚РµРѕСЂРёСЏ РёРіСЂ} \dotfill \pageref{SekMM} \\[3mm]
-%{\bf РџСЂРёРєР»Р°РґРЅС‹Рµ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ} \dotfill \pageref{SekAI} \\[3mm]
-%{\bf РЎРїРёСЃРѕРє Р°РІС‚РѕСЂРѕРІ} \dotfill \pageref{List} \\
-\setcounter{page}{5} \pagebreak
+\pagebreak
+\thispagestyle{empty}
+\begin{center} СОДЕРЖАНИЕ \end{center}
+\vspace{15mm}
+{\bf Пленарные и полупленарные доклады} \dotfill \pageref{Plen} \\[3mm]
+%{\bf Анализ данных} \dotfill \pageref{SekAnData} \\[3mm]
+%{\bf Задачи размещения} \dotfill \pageref{SekZR} \\[3mm]
+%{\bf Непрерывная оптимизация} \dotfill \pageref{SekNO} \\[3mm]
+%{\bf Прикладные исследования} \dotfill \pageref{SekAI} \\[3mm]
+%{\bf Теория расписаний} \dotfill \pageref{SekST} \\[3mm]
+%{\bf Целочисленное программирование} \dotfill \pageref{SekCP} \\[3mm]
+%{\bf Экономико-математическое моделирование} \dotfill \pageref{SekMM} \\[3mm]
+{\bf Список авторов} \dotfill \pageref{List} \\
+\setcounter{page}{5}
+\pagebreak
 
-%
-% Р”Р°Р»СЊС€Рµ РёРґРµС‚ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРЅС‚РµРЅС‚
-%
+%Пленарные доклады:
+%------------------------------------------------------------------------------
+\markboth{\underline{\mbox{ }\hspace{70mm}\bf\textit{Пленарные и полупленарные доклады}}}
+{\underline{\bf\textit{Пленарные и полупленарные доклады}\hspace{70mm}\mbox{ }}} \setcounter{page}{5} \label{Plen}
+
+%INPUTS%
+
+%------------------------------------------------------------------------------
+\pagebreak
+\markboth{ }{ }
+\vspace{-10mm}
+\begin{center} СПИСОК АВТОРОВ \end{center}
+\vspace{-5mm}
+\label{List}
+\vspace{5mm}
+\noindent
+%PAGEREFS%
+
+\end{document}
