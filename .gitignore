@@ -3,3 +3,6 @@
 /.vs/cm/v15/.suo
 /.vs/cm/v15/sqlite3/storage.ide
 /.vs/cm/v15/Server/sqlite3
+/cm/bin/Release
+/cm/obj/Release
+/cm.sln.DotSettings.user

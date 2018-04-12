@@ -63,11 +63,11 @@ namespace cm
 
         public event EventHandler FilesAdding;
 
-        public event EventHandler<int> FilesRemoving;
+        public event EventHandler<ValueEventArg<int>> FilesRemoving;
 
-        public event EventHandler<int> FileUp;
+        public event EventHandler<ValueEventArg<int>> FileUp;
 
-        public event EventHandler<int> FileDown;
+        public event EventHandler<ValueEventArg<int>> FileDown;
 
         public event EventHandler HeaderBrowsing;
 
@@ -145,17 +145,17 @@ namespace cm
 
         private void RemoveClick(object sender, EventArgs e)
         {
-            FilesRemoving?.Invoke(this, _listData.SelectedIndex);
+            FilesRemoving?.Invoke(this, new ValueEventArg<int>(_listData.SelectedIndex));
         }
 
         private void UpClick(object sender, EventArgs e)
         {
-            FileUp?.Invoke(this, _listData.SelectedIndex);
+            FileUp?.Invoke(this, new ValueEventArg<int>(_listData.SelectedIndex));
         }
 
         private void DownClick(object sender, EventArgs e)
         {
-            FileDown?.Invoke(this, _listData.SelectedIndex);
+            FileDown?.Invoke(this, new ValueEventArg<int>(_listData.SelectedIndex));
         }
 
         private void SortClick(object sender, EventArgs e)
