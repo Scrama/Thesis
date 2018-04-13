@@ -38,8 +38,10 @@
             this._log = new System.Windows.Forms.TextBox();
             this._build = new System.Windows.Forms.Button();
             this._about = new System.Windows.Forms.Button();
+            this._gotoTarget = new System.Windows.Forms.Button();
             this._target = new System.Windows.Forms.TextBox();
             this._browseTarget = new System.Windows.Forms.Button();
+            this._gotoHeader = new System.Windows.Forms.Button();
             this._header = new System.Windows.Forms.TextBox();
             this._browseHeader = new System.Windows.Forms.Button();
             this._listData = new System.Windows.Forms.ListBox();
@@ -48,8 +50,7 @@
             this._buttonSort = new System.Windows.Forms.Button();
             this._buttonDown = new System.Windows.Forms.Button();
             this._buttonUp = new System.Windows.Forms.Button();
-            this._gotoHeader = new System.Windows.Forms.Button();
-            this._gotoTarget = new System.Windows.Forms.Button();
+            this._buttonClear = new System.Windows.Forms.Button();
             layout = new System.Windows.Forms.TableLayoutPanel();
             right = new System.Windows.Forms.Panel();
             groupBox = new System.Windows.Forms.GroupBox();
@@ -154,6 +155,16 @@
             groupTarget.TabStop = false;
             groupTarget.Text = "Результат";
             // 
+            // _gotoTarget
+            // 
+            this._gotoTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._gotoTarget.Location = new System.Drawing.Point(206, 59);
+            this._gotoTarget.Name = "_gotoTarget";
+            this._gotoTarget.Size = new System.Drawing.Size(90, 25);
+            this._gotoTarget.TabIndex = 8;
+            this._gotoTarget.Text = "Проводник";
+            this._gotoTarget.UseVisualStyleBackColor = true;
+            // 
             // _target
             // 
             this._target.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -186,6 +197,16 @@
             groupHeader.TabIndex = 2;
             groupHeader.TabStop = false;
             groupHeader.Text = "Файл-заголовок";
+            // 
+            // _gotoHeader
+            // 
+            this._gotoHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._gotoHeader.Location = new System.Drawing.Point(206, 59);
+            this._gotoHeader.Name = "_gotoHeader";
+            this._gotoHeader.Size = new System.Drawing.Size(90, 25);
+            this._gotoHeader.TabIndex = 7;
+            this._gotoHeader.Text = "Проводник";
+            this._gotoHeader.UseVisualStyleBackColor = true;
             // 
             // _header
             // 
@@ -220,6 +241,7 @@
             // groupData
             // 
             groupData.AccessibleRole = System.Windows.Forms.AccessibleRole.Border;
+            groupData.Controls.Add(this._buttonClear);
             groupData.Controls.Add(this._listData);
             groupData.Controls.Add(this._buttonAdd);
             groupData.Controls.Add(this._buttonRemove);
@@ -250,21 +272,21 @@
             // _buttonAdd
             // 
             this._buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonAdd.Location = new System.Drawing.Point(300, 423);
+            this._buttonAdd.Location = new System.Drawing.Point(338, 423);
             this._buttonAdd.Name = "_buttonAdd";
-            this._buttonAdd.Size = new System.Drawing.Size(70, 25);
+            this._buttonAdd.Size = new System.Drawing.Size(32, 25);
             this._buttonAdd.TabIndex = 4;
-            this._buttonAdd.Text = "Добавить";
+            this._buttonAdd.Text = "+";
             this._buttonAdd.UseVisualStyleBackColor = true;
             // 
             // _buttonRemove
             // 
             this._buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonRemove.Location = new System.Drawing.Point(224, 423);
+            this._buttonRemove.Location = new System.Drawing.Point(300, 423);
             this._buttonRemove.Name = "_buttonRemove";
-            this._buttonRemove.Size = new System.Drawing.Size(70, 25);
+            this._buttonRemove.Size = new System.Drawing.Size(32, 25);
             this._buttonRemove.TabIndex = 3;
-            this._buttonRemove.Text = "Убрать";
+            this._buttonRemove.Text = "-";
             this._buttonRemove.UseVisualStyleBackColor = true;
             // 
             // _buttonSort
@@ -297,25 +319,15 @@
             this._buttonUp.Text = "↑";
             this._buttonUp.UseVisualStyleBackColor = true;
             // 
-            // _gotoHeader
+            // _buttonClear
             // 
-            this._gotoHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._gotoHeader.Location = new System.Drawing.Point(206, 59);
-            this._gotoHeader.Name = "_gotoHeader";
-            this._gotoHeader.Size = new System.Drawing.Size(90, 25);
-            this._gotoHeader.TabIndex = 7;
-            this._gotoHeader.Text = "Проводник";
-            this._gotoHeader.UseVisualStyleBackColor = true;
-            // 
-            // _gotoTarget
-            // 
-            this._gotoTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._gotoTarget.Location = new System.Drawing.Point(206, 59);
-            this._gotoTarget.Name = "_gotoTarget";
-            this._gotoTarget.Size = new System.Drawing.Size(90, 25);
-            this._gotoTarget.TabIndex = 8;
-            this._gotoTarget.Text = "Проводник";
-            this._gotoTarget.UseVisualStyleBackColor = true;
+            this._buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonClear.Location = new System.Drawing.Point(244, 423);
+            this._buttonClear.Name = "_buttonClear";
+            this._buttonClear.Size = new System.Drawing.Size(32, 25);
+            this._buttonClear.TabIndex = 6;
+            this._buttonClear.Text = "X";
+            this._buttonClear.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -358,6 +370,7 @@
         private System.Windows.Forms.TextBox _log;
         private System.Windows.Forms.Button _gotoTarget;
         private System.Windows.Forms.Button _gotoHeader;
+        private System.Windows.Forms.Button _buttonClear;
     }
 }
 

@@ -22,8 +22,12 @@ namespace cm
             _build.Enabled = false;
             _gotoHeader.Enabled = false;
             _gotoTarget.Enabled = false;
+            _buttonClear.Enabled = false;
 
             new ToolTip().SetToolTip(_buttonSort, @"Сортировать по фамилии первого автора");
+            new ToolTip().SetToolTip(_buttonAdd, @"Добавить файл");
+            new ToolTip().SetToolTip(_buttonRemove, @"Убрать файл");
+            new ToolTip().SetToolTip(_buttonClear, @"Очистить список");
 
             _listData.SelectedIndexChanged += (sender, args) => ValidateButtons();
 
@@ -40,12 +44,18 @@ namespace cm
             _buttonDown.Click += DownClick;
             _buttonSort.Click += SortClick;
             _buttonRemove.Click += RemoveClick;
+            _buttonClear.Click += ClearClick;
             _browseHeader.Click += HeaderBrowseClick;
             _browseTarget.Click += TargetBrowseClick;
             _build.Click += BuildClick;
             _about.Click += AboutClick;
             _gotoHeader.Click += GotoHeaderClick;
             _gotoTarget.Click += GotoTargetClick;
+        }
+
+        private void ClearClick(object sender, EventArgs e)
+        {
+            FilesClearing?.Invoke(this, null);
         }
 
         private void GotoTargetClick(object sender, EventArgs e)
@@ -70,6 +80,7 @@ namespace cm
             _buttonUp.Enabled = _listData.SelectedIndex > 0;
             _buttonDown.Enabled = _listData.SelectedIndex > -1 && _listData.SelectedIndex < _listData.Items.Count - 1;
             _buttonRemove.Enabled = _listData.SelectedIndex > -1 && _listData.SelectedIndex < _listData.Items.Count;
+            _buttonClear.Enabled = _listData.Items.Count > 0;
             _buttonSort.Enabled = _listData.Items.Count > 0;
 
             _build.Enabled = !_building
@@ -101,6 +112,8 @@ namespace cm
         public event EventHandler Building;
 
         public event EventHandler FilesSorting;
+
+        public event EventHandler FilesClearing;
 
         public string[] GetFiles(string dir)
         {

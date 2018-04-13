@@ -15,6 +15,7 @@ namespace cm
         event EventHandler TargetBrowsing;
         event EventHandler Building;
         event EventHandler FilesSorting;
+        event EventHandler FilesClearing;
 
         void SetFiles(List<string> files);
         string[] GetFiles(string dir);

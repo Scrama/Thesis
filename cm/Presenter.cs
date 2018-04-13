@@ -27,6 +27,7 @@ namespace cm
             _view.HeaderBrowsing += HeaderBrowsing;
             _view.TargetBrowsing += TargetBrowsing;
             _view.Building += StartBuilding;
+            _view.FilesClearing += FilesClearing;
 
             _view.Load += (sender, args) =>
             {
@@ -34,6 +35,12 @@ namespace cm
                 Log.AddExtraLogger(_view.Log);
             };
             _view.Closed += (sender, args) => SaveSettings();
+        }
+
+        private void FilesClearing(object sender, EventArgs e)
+        {
+            _model.Files.Clear();
+            _view.SetFiles(_model.Files);
         }
 
         private void StartBuilding(object sender, EventArgs e)

@@ -194,6 +194,7 @@ namespace cm
                 using (var reader = new StreamReader(file, Encoding.GetEncoding(1251)))
                 {
                     var body = false;
+                    var authorsTaken = false;
                     while (!reader.EndOfStream)
                     {
                         var token = GetToken(reader);
@@ -234,7 +235,7 @@ namespace cm
 
                         #region . list authors .
 
-                        if (token.Trim().ToLower() == AuthorTag)
+                        if (token.Trim().ToLower() == AuthorTag && !authorsTaken)
                         {
                             while (token != "{")
                             {
@@ -247,7 +248,7 @@ namespace cm
 
                             while (token != "}")
                             {
-                                if (token.Trim().StartsWith("\\"))
+                                if (token.Trim().StartsWith("\\") || token.Trim() == ",")
                                 {
                                     var author = builder.ToString().Trim(' ', ',');
                                     if (!string.IsNullOrWhiteSpace(author))
@@ -285,6 +286,8 @@ namespace cm
                                 token = GetToken(reader);
                                 output.Write(token);
                             }
+
+                            authorsTaken = true;
                         }
 
                         //Последнего автора
@@ -301,6 +304,7 @@ namespace cm
                                 else
                                     labelMap.Add(new AuthLabel(author, label));
                                 result.Add(label, author);
+                                builder.Clear();
                             }
                         }
 
@@ -394,7 +398,7 @@ namespace cm
 
         private readonly char[] _delimeter =
         {
-            ' ', '{', '\\', '}', '(', ')', '\t', '\n', '\r'
+            ' ', '{', '\\', '}', '(', ')', '\t', '\n', '\r', ','
         };
 
         private string GetToken(StreamReader reader)
